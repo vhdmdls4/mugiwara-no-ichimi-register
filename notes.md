@@ -24,3 +24,9 @@ export const Componente = () => {
 }
 
 lembrar de importar o css para o componente em questão no .js do componente, não no index.
+
+reactstrictmode faz a renderização duplicada dos componentes para validação e verificação, quando subir para produção isso não acontecerá;
+
+é possível criar componentes baseados em classes: https://pt-br.reactjs.org/docs/components-and-props.html
+
+
