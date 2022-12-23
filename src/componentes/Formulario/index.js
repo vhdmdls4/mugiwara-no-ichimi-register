@@ -3,14 +3,27 @@ import CampoTexto from "../CampoTexto"
 import ListaSuspensa from "../ListaSuspensa"
 import Botao from "../Botao"
 import { useState } from "react"
+import Divisao from "../Divisao"
 
-const Formulario = () => {
+const Formulario = (props) => {
   const [nome, setNome] = useState("")
   const [funcao, setFuncao] = useState("")
   const [recompensa, setRecompensa] = useState("")
   const [habilidade, setHabilidade] = useState("")
   const [imagem, setImagem] = useState("")
   const [equipe, setEquipe] = useState("")
+
+  const aoSubmeter = (event) => {
+    event.preventDefault()
+    props.aoColaboradorCadastrado({
+      nome,
+      funcao,
+      recompensa,
+      habilidade,
+      imagem,
+      equipe,
+    })
+  }
 
   const equipes = [
     "Capitão",
@@ -24,19 +37,6 @@ const Formulario = () => {
     "Músicos",
     "Timoneiros",
   ]
-
-  const aoSubmeter = (event) => {
-    event.preventDefault()
-    console.log(
-      "Form submetido",
-      nome,
-      funcao,
-      recompensa,
-      habilidade,
-      imagem,
-      equipe
-    )
-  }
 
   return (
     <section className="formulario">
