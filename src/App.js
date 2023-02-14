@@ -2,6 +2,7 @@ import { useState } from "react"
 import Banner from "./componentes/Banner"
 import Formulario from "./componentes/Formulario"
 import Divisao from "./componentes/Divisao"
+import Rodape from "./componentes/Rodape/Rodape"
 
 function App() {
   const [colaboradores, setColaborador] = useState([])
@@ -14,53 +15,48 @@ function App() {
   const equipes = [
     {
       nome: "Capitão",
-      corPrimario: "#d9f7e9",
-      corSecundario: "#57c278",
+      corPrimario: "#F6F6F6",
+      corSecundario: "#00BFFF",
     },
     {
       nome: "Imediato",
-      corPrimario: "#00BFFF",
-      corSecundario: "#1E90FF",
+      corPrimario: "#EFEFEF",
+      corSecundario: "#FFA07A",
     },
     {
       nome: "Navegadores",
-      corPrimario: "#DAA520",
-      corSecundario: "#40E0D0",
+      corPrimario: "#E8F0F2",
+      corSecundario: "#FFD700",
     },
     {
       nome: "Atiradores",
-      corPrimario: "#DB7093",
-      corSecundario: "#F4A460",
+      corPrimario: "#F2F2F2",
+      corSecundario: "#7FFFD4",
     },
     {
       nome: "Cozinheiros",
-      corPrimario: "#32CD32",
-      corSecundario: "#EE82EE",
+      corPrimario: "#F8F8F8",
+      corSecundario: "#BA55D3",
     },
     {
       nome: "Médicos",
-      corPrimario: "#40E0D0",
-      corSecundario: "#6B8E23",
+      corPrimario: "#F5F5F5",
+      corSecundario: "#32CD32",
     },
     {
       nome: "Arqueólogos",
-      corPrimario: "#9932CC",
-      corSecundario: "#00FF7F",
+      corPrimario: "#F0F8FF",
+      corSecundario: "#FF69B4",
     },
     {
       nome: "Construtores",
-      corPrimario: "#00FA9A",
-      corSecundario: "#DDA0DD",
+      corPrimario: "#FAF0E6",
+      corSecundario: "#9400D3",
     },
     {
       nome: "Músicos",
-      corPrimario: "#FF6347",
-      corSecundario: "#800080",
-    },
-    {
-      nome: "Timoneiros",
-      corPrimario: "#9370DB",
-      corSecundario: "#DC143C",
+      corPrimario: "#F4F4F4",
+      corSecundario: "#FF4500",
     },
   ]
 
@@ -68,18 +64,23 @@ function App() {
     <div className="App">
       <Banner />
       <Formulario
+        nomeEquipes={equipes.map((squad) => squad.nome)}
         aoColaboradorCadastrado={(colaborador) =>
           novoColaboradorAdicionado(colaborador)
         }
       />
-      {equipes.map((equipeEspecifica) => (
+      {equipes.map((squad) => (
         <Divisao
-          key={equipeEspecifica.nome}
-          nome={equipeEspecifica.nome}
-          corPrimaria={equipeEspecifica.corPrimario}
-          corSecundaria={equipeEspecifica.corSecundario}
+          key={squad.nome}
+          nome={squad.nome}
+          corPrimaria={squad.corPrimario}
+          corSecundaria={squad.corSecundario}
+          colaboradores={colaboradores.filter(
+            (colaborador) => colaborador.equipe === squad.nome
+          )}
         />
       ))}
+      <Rodape />
     </div>
   )
 }

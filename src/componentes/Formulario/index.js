@@ -7,36 +7,26 @@ import Divisao from "../Divisao"
 
 const Formulario = (props) => {
   const [nome, setNome] = useState("")
-  const [funcao, setFuncao] = useState("")
   const [recompensa, setRecompensa] = useState("")
   const [habilidade, setHabilidade] = useState("")
   const [imagem, setImagem] = useState("")
-  const [equipe, setEquipe] = useState("")
+  const [equipe, setEquipe] = useState("Capitão")
 
   const aoSubmeter = (event) => {
     event.preventDefault()
     props.aoColaboradorCadastrado({
       nome,
-      funcao,
       recompensa,
       habilidade,
       imagem,
       equipe,
     })
+    setNome("")
+    setRecompensa("")
+    setHabilidade("")
+    setImagem("")
+    setEquipe("")
   }
-
-  const equipes = [
-    "Capitão",
-    "Imediato",
-    "Navegadores",
-    "Atiradores",
-    "Cozinheiros",
-    "Médicos",
-    "Arqueólogos",
-    "Construtores",
-    "Músicos",
-    "Timoneiros",
-  ]
 
   return (
     <section className="formulario">
@@ -45,46 +35,43 @@ const Formulario = (props) => {
         <CampoTexto
           label="Nome"
           obrigatorio={true}
-          placeholder="Digite seu nome e alcunha"
+          placeholder="Digite o nome e alcunha"
           valor={nome}
+          type="text"
           aoAlterado={(valor) => setNome(valor)}
-        />
-        <CampoTexto
-          label="Função"
-          obrigatorio={true}
-          placeholder="Digite seu cargo na tripulação"
-          valor={funcao}
-          aoAlterado={(valor) => setFuncao(valor)}
-        />
-        <CampoTexto
-          label="Recompensa"
-          obrigatorio={true}
-          placeholder="Digite o valor de sua recompensa"
-          valor={recompensa}
-          aoAlterado={(valor) => setRecompensa(valor)}
         />
         <CampoTexto
           label="Habilidade"
           obrigatorio={true}
-          placeholder="Digite aqui sua habilidade especial (sem haki)"
+          placeholder="Digite aqui a habilidade especial (sem haki)"
           valor={habilidade}
+          type="text"
           aoAlterado={(valor) => setHabilidade(valor)}
+        />
+        <CampoTexto
+          label="Recompensa"
+          obrigatorio={true}
+          placeholder="Digite o valor da recompensa em milhões"
+          valor={recompensa}
+          type="number"
+          aoAlterado={(valor) => setRecompensa(valor)}
         />
         <CampoTexto
           label="Imagem"
           obrigatorio={true}
           placeholder="Digite o endereço da imagem"
           valor={imagem}
+          type="url"
           aoAlterado={(valor) => setImagem(valor)}
         />
         <ListaSuspensa
           obrigatorio={true}
-          label="Qual divisão de comandante você faz parte?"
-          itens={equipes}
+          label="À qual divisão de comandante faz parte?"
+          itens={props.nomeEquipes}
           valor={equipe}
           aoAlterado={(valor) => setEquipe(valor)}
         />
-        <Botao>Criar Card</Botao>
+        <Botao>Criar card</Botao>
       </form>
     </section>
   )

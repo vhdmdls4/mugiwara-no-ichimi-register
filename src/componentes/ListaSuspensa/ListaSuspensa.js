@@ -5,6 +5,8 @@ export const ListaSuspensa = (props) => {
     <div className="lista-suspensa">
       <label>{props.label}</label>
       <select
+        title="seleção"
+        name="seleção"
         onChange={(event) => props.aoAlterado(event.target.value)}
         required={props.obrigatorio}
         value={props.value}

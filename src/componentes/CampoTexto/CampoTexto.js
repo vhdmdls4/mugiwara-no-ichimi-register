@@ -16,6 +16,7 @@ export const CampoTexto = (props) => {
         onChange={aoDigitar}
         required={props.obrigatorio}
         placeholder={placeholderModificada}
+        type={props.type}
       />
     </div>
   )

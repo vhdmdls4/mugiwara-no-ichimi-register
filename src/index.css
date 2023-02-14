@@ -5,9 +5,46 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: #28282d;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+@media screen and (max-width: 769px) {
+  .formulario {
+    margin: 0 !important;
+    max-width: 100vw !important;
+  }
+  .formulario form {
+    border-radius: 0 !important;
+    max-width: 100% !important;
+    padding: 32px !important;
+  }
+  .botao {
+    width: 100%;
+    padding: 24px !important;
+    font-size: 24px !important;
+  }
+  .divisao h3 {
+    margin: 24px 0 16px 0 !important;
+  }
+  .colaborador .rodape {
+    padding: 48px 0 24px 0 !important;
+  }
+  .colaborador .rodape h5 {
+    margin: 16px !important;
+  }
+  .footer {
+    box-sizing: border-box;
+    display: flex !important;
+    flex-direction: column;
+    padding: 36px !important;
+    width: 100% !important;
+  }
+  .footer ul {
+    padding: 0;
+  }
 }
